@@ -2317,6 +2317,11 @@ domexception@^1.0.1:
   dependencies:
     webidl-conversions "^4.0.2"
 
+dotenv@^8.0.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
+
 duplexer2@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
@@ -5627,9 +5632,16 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-"react-native-fido-login-api@https://sdk.dev.loginid.io/repository/npm/react-native-fido-login-api/-/react-native-fido-login-api-0.62.22.tgz":
-  version "0.62.22"
-  resolved "https://sdk.dev.loginid.io/repository/npm/react-native-fido-login-api/-/react-native-fido-login-api-0.62.22.tgz#e0a499731c80a2131c531ca462682553b7e2099d"
+react-native-dotenv@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-2.5.3.tgz#ec70186d2b1491b0519647c53bf91f34395377a3"
+  integrity sha512-Fibw5q6vy91aRwol7yO6U9Om+EyE7Vs4pO70AYGRkDuMkaQ4EIyYw9mmiPcKo6VFCwlpE8y1AZImxoKREFASXA==
+  dependencies:
+    dotenv "^8.0.0"
+
+"react-native-fido-login-api@https://sdk.dev.loginid.io/repository/npm/react-native-fido-login-api/-/react-native-fido-login-api-0.62.30.tgz":
+  version "0.62.30"
+  resolved "https://sdk.dev.loginid.io/repository/npm/react-native-fido-login-api/-/react-native-fido-login-api-0.62.30.tgz#8c053aa1d15af5aea23fe7b33964f16d671f05b9"
 
 react-native@0.63.4:
   version "0.63.4"

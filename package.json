@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "adb reverse tcp:8081 tcp:8081 && react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -14,7 +14,8 @@
     "package.json": "^2.0.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-fido-login-api": "https://sdk.dev.loginid.io/repository/npm/react-native-fido-login-api/-/react-native-fido-login-api-0.62.22.tgz"
+    "react-native-dotenv": "^2.5.3",
+    "react-native-fido-login-api": "https://sdk.dev.loginid.io/repository/npm/react-native-fido-login-api/-/react-native-fido-login-api-0.62.30.tgz"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
