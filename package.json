@@ -6,7 +6,7 @@
     "android": "adb reverse tcp:8081 tcp:8081 && react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest ./__tests__/app.test.js --config=jest.config.js --detectOpenHandles --forceExit",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -23,9 +23,11 @@
     "@react-native-community/eslint-config": "^1.1.0",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
+    "jabber": "^1.2.2",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "webdriverio": "^7.2.3"
   },
   "jest": {
     "preset": "react-native"

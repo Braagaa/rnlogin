@@ -1,18 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import RNLoginApi from 'react-native-fido-login-api';
-import jwtDecode from 'jwt-decode';
-import {API_KEY, BASE_URI} from '@env';
-import {testProps} from './utils/index';
+import React, { useState, useEffect } from "react";
+import RNLoginApi from "react-native-fido-login-api";
+import jwtDecode from "jwt-decode";
+//import {API_KEY, BASE_URI} from '@env';
+import { testProps } from "./utils/index";
 import {
   StyleSheet,
   View,
   Text,
   TextInput,
   TouchableOpacity,
-} from 'react-native';
+} from "react-native";
+
+const API_KEY =
+  "gkI5fDdxMRSGVI1hnfacxUz-L7xnB4m9ZYNotIjU5EFAPwaM7i_vnrSCtOCcwmOC51rWxz5ENJCRRmCYWO7i8Q==";
+const BASE_URI = "https://34b538b0-8ea2-11eb-8acd-978a01301611.usw1.loginid.io";
 
 const App = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleInput = (text) => {
@@ -22,10 +26,10 @@ const App = () => {
   const handleLogin = async () => {
     let res;
     if (username && !isLoggedIn) {
-      console.log('Logging with username');
+      console.log("Logging with username");
       res = await RNLoginApi.loginWithUsername(username);
     } else {
-      console.log('Logging without username');
+      console.log("Logging without username");
       res = await RNLoginApi.login();
     }
 
@@ -53,7 +57,7 @@ const App = () => {
   const handleLogout = () => {
     RNLoginApi.logout();
     setIsLoggedIn(false);
-    setUsername('');
+    setUsername("");
   };
 
   useEffect(() => {
@@ -64,13 +68,13 @@ const App = () => {
           const token = await RNLoginApi.getCurrentToken();
           setUsername(username);
           setIsLoggedIn(true);
-          alert(`${username} is already signed in.`);
+          //alert(`${username} is already signed in.`);
           console.log(jwtDecode(token));
         } else {
-          alert(`Your account ${username} is not signed in.`);
+          //alert(`Your account ${username} is not signed in.`);
         }
       } else {
-        alert('You do not have an account. Register an account.');
+        //alert('You do not have an account. Register an account.');
       }
     };
     RNLoginApi.configure(API_KEY, BASE_URI);
@@ -87,26 +91,29 @@ const App = () => {
             style={styles.textInput}
             value={username}
             onChangeText={handleInput}
-            {...testProps()}
+            {...testProps("username")}
           />
         </View>
         <TouchableOpacity
           style={[styles.button, styles.marginTop]}
           onPress={handleLogin}
-          {...testProps()}>
+          {...testProps("Login")}
+        >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
           onPress={handleRegister}
-          {...testProps()}>
+          {...testProps("Register")}
+        >
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
         {isLoggedIn && (
           <TouchableOpacity
             style={styles.button}
             onPress={handleLogout}
-            {...testProps()}>
+            {...testProps("Logout")}
+          >
             <Text style={styles.buttonText}>Logout</Text>
           </TouchableOpacity>
         )}
@@ -120,48 +127,48 @@ const styles = StyleSheet.create({
     flex: 1,
     width: null,
     height: null,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'snow',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "snow",
   },
   textInput: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     height: 50,
     width: 100,
-    color: 'snow',
+    color: "snow",
     flex: 1,
     marginLeft: 20,
   },
   inputView: {
-    backgroundColor: '#7FC0CF',
+    backgroundColor: "#7FC0CF",
     borderRadius: 30,
-    width: '70%',
+    width: "70%",
     height: 45,
     marginBottom: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   header: {
     fontSize: 20,
     marginBottom: 40,
-    color: 'purple',
+    color: "purple",
   },
   marginTop: {
     marginTop: 30,
   },
   button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'steelblue',
-    width: '80%',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "steelblue",
+    width: "80%",
     height: 50,
     borderRadius: 25,
     marginTop: 10,
   },
   buttonText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 20,
-    color: 'snow',
+    color: "snow",
   },
   buttonDisabled: {
     opacity: 0.6,
