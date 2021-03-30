@@ -35,6 +35,7 @@ const App = () => {
 
     if (res.success) {
       setIsLoggedIn(true);
+      const username = await RNLoginApi.getCurrentUsername();
       alert(`Successfully logged in!: ${username}`);
       console.log(jwtDecode(res.jwt));
     } else {

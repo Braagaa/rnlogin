@@ -22,6 +22,15 @@ module.exports = class View {
     await elm.setValue(value);
   }
 
+  async waitForElementClick(selector) {
+    const elm = await this.waitForElement(selector);
+    await elm.click();
+  }
+
+  async findElements(selector) {
+    return await this.driver.$$(selector);
+  }
+
   async findElementClick(selector) {
     await this.driver.$(selector).then((elm) => elm.click());
   }

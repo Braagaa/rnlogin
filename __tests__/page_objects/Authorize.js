@@ -24,9 +24,20 @@ module.exports = class Authorize extends View {
     await this.pressFinger(1);
   }
 
+  async login(username) {
+    await this.waitForElementSetValue(selectors.usernameInput, username);
+    await this.findElementClick(selectors.loginButton);
+  }
+
   async loginFido2(username) {
     await this.waitForElementSetValue(selectors.usernameInput, username);
     await this.findElementClick(selectors.loginButton);
+    await this.waitForElement(selectors.button('Cancel'));
+    await this.pressFinger(1);
+  }
+
+  async loginWithoutUsernameFido2() {
+    await this.waitForElementClick(selectors.loginButton);
     await this.waitForElement(selectors.button('Cancel'));
     await this.pressFinger(1);
   }

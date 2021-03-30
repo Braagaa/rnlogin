@@ -20,17 +20,17 @@ const opts = {
 };
 
 const jabber = new Jabber();
-const username = jabber.createWord(3);
+const username = jabber.createWord(128);
 
 let auth;
 
 beforeAll(async () => {
   auth = await Authorize.buildDriver(opts);
 });
-/*
+
 describe('Validation', () => {
   describe('Register', () => {
-    it('Should not register an empty', async () => {
+    it('Should not register an empty username', async () => {
       await auth.register('');
       const result = await auth.getAlertText();
       expect(result).toEqual('ERROR: missing username');
@@ -53,22 +53,48 @@ describe('Validation', () => {
       const result = await auth.getAlertText();
       expect(result).toEqual(messages.CHARACTERS);
     });
+  });
 
-    afterEach(async () => {
-      await auth.closeAlert();
+  describe('Login', () => {
+    it('Should not login an empty username', async () => {
+      await auth.login('');
+      const result = await auth.getAlertText();
+      expect(result).toEqual('ERROR: Username is not specified');
+    });
+
+    it('Should not login a username 1 character long', async () => {
+      await auth.login(jabber.createWord(1));
+      const result = await auth.getAlertText();
+      expect(result).toEqual(messages.CHARACTERS);
+    });
+
+    it('Should not login a username 2 characters long', async () => {
+      await auth.login(jabber.createWord(2));
+      const result = await auth.getAlertText();
+      expect(result).toEqual(messages.CHARACTERS);
+    });
+
+    it('Should not login a username 129 characters long', async () => {
+      await auth.login(jabber.createWord(129));
+      const result = await auth.getAlertText();
+      expect(result).toEqual(messages.CHARACTERS);
     });
   });
+
+  afterEach(async () => {
+    await auth.closeAlert();
+  });
 });
-*/
+
 describe('Register', () => {
   it('Should successfully register a username 3 characters long', async () => {
+    const username = jabber.createWord(3);
     await auth.registerFido2(username);
     const result = await auth.getAlertText();
     expect(result).toEqual(messages.SUCCESS_REGISTER(username));
   });
 
   it('Should successfully register a username 128 characters long', async () => {
-    const username = jabber.createWord(128);
     await auth.registerFido2(username);
     const result = await auth.getAlertText();
     expect(result).toEqual(messages.SUCCESS_REGISTER(username));
@@ -83,6 +109,12 @@ describe('Register', () => {
 describe('Login', () => {
   it('Should successfully login a registered username', async () => {
     await auth.loginFido2(username);
+    const result = await auth.getAlertText();
+    expect(result).toEqual(messages.SUCCESS_LOGIN(username));
+  });
+
+  it('Should successfully login without a username (registered username)', async () => {
+    await auth.loginWithoutUsernameFido2(username);
     const result = await auth.getAlertText();
     expect(result).toEqual(messages.SUCCESS_LOGIN(username));
   });
