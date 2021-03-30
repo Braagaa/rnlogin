@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RNLoginApi from "react-native-fido-login-api";
 import jwtDecode from "jwt-decode";
-//import {API_KEY, BASE_URI} from '@env';
+//import { API_KEY, BASE_URI } from "@env";
 import { testProps } from "./utils/index";
 import {
   StyleSheet,
@@ -14,6 +14,9 @@ import {
 const API_KEY =
   "gkI5fDdxMRSGVI1hnfacxUz-L7xnB4m9ZYNotIjU5EFAPwaM7i_vnrSCtOCcwmOC51rWxz5ENJCRRmCYWO7i8Q==";
 const BASE_URI = "https://34b538b0-8ea2-11eb-8acd-978a01301611.usw1.loginid.io";
+
+console.log(API_KEY);
+console.log(BASE_URI);
 
 const App = () => {
   const [username, setUsername] = useState("");
