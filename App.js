@@ -38,7 +38,7 @@ const App = () => {
       alert(`Successfully logged in!: ${username}`);
       console.log(jwtDecode(res.jwt));
     } else {
-      alert(`Failed to login: ${res.errorMessage}`);
+      alert(`ERROR: ${res.errorMessage}`);
     }
   };
 
@@ -50,7 +50,7 @@ const App = () => {
       alert(`Successfully registered!: ${username}`);
       console.log(jwtDecode(res.jwt));
     } else {
-      alert(`Failed to register: ${res.errorMessage}`);
+      alert(`ERROR: ${res.errorMessage}`);
     }
   };
 
@@ -97,14 +97,14 @@ const App = () => {
         <TouchableOpacity
           style={[styles.button, styles.marginTop]}
           onPress={handleLogin}
-          {...testProps("Login")}
+          {...testProps("login")}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
           onPress={handleRegister}
-          {...testProps("Register")}
+          {...testProps("register")}
         >
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
@@ -112,7 +112,7 @@ const App = () => {
           <TouchableOpacity
             style={styles.button}
             onPress={handleLogout}
-            {...testProps("Logout")}
+            {...testProps("logout")}
           >
             <Text style={styles.buttonText}>Logout</Text>
           </TouchableOpacity>
